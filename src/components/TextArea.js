@@ -1,8 +1,14 @@
 import React, {useState} from 'react'
 
-function getButton(title, color, disabled, workfn) {
+function Button(props) {
     return (
-        <button type="button" disabled={disabled} className={`btn btn-${color} my-3`} onClick={workfn}>{title}</button>
+        <button type="button" 
+            disabled={props.disabled} 
+            className={`btn btn-${props.color}`} 
+            onClick={props.workfn}
+        >
+            {props.title}
+        </button>
     )
 }
 
@@ -69,6 +75,11 @@ export default function TextArea() {
     const copyText = ()=>{
         navigator.clipboard.writeText(text);
     }
+    const clearText = ()=>{
+        setText("");
+    }
+
+    let disButtons = text.length===0;
 
     return (
         <>
@@ -88,13 +99,15 @@ export default function TextArea() {
                 placeholder='Enter your text here...'
             ></textarea>
             </div>
-            {getButton("Lower Case", "primary", (text.length===0), setLowerCase)}
-            {getButton("Upper Case", "secondary", (text.length===0), setUpperCase)}
-            {getButton("Beautify JSON", "success", (text.length===0), beautifyJSON)}
-            {getButton("Filter Text", "info", (text.length===0), filterText)}
-            {getButton("Soon!", "warning", true)}
-            {getButton("Soon!", "danger", true)}
-            {getButton("Copy Text", "light", (text.length===0), copyText)}
+            <div className='my-3'>
+                <Button title="Lower Case" color="primary" disabled={disButtons} workfn={setLowerCase}/>
+                <Button title="Upper Case" color="secondary" disabled={disButtons} workfn={setUpperCase}/>
+                <Button title="Beautify JSON" color="success" disabled={disButtons} workfn={beautifyJSON}/>
+                <Button title="Filter Text" color="info" disabled={disButtons} workfn={filterText}/>
+                <Button title="Soon!" color="warning" disabled={true} workfn={null}/>
+                <Button title="Clear Text" color="danger" disabled={disButtons} workfn={clearText}/>
+                <Button title="Copy Text" color="light" disabled={disButtons} workfn={copyText}/>
+            </div>
         </>
     )
 }

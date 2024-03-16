@@ -18,7 +18,7 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav ms-md-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/">Features</a>
+              <a className="nav-link" target="_blank" rel="noreferrer" href="https://github.com/dakshy/react-textea">GitHub</a>
             </li>
             <li className="nav-item py-2 py-lg-1 col-12 col-lg-auto">
               <div className="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
