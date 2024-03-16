@@ -1,4 +1,7 @@
 import React from 'react'
+import {
+    Link
+} from "react-router-dom";
 
 function changeMode() {
 	if(document.body.getAttribute('data-bs-theme') === 'dark')
@@ -11,7 +14,7 @@ export default function NavBar() {
   return (
     <div className="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
       <div className="container">
-        <a href="../" className="navbar-brand">Textea</a>
+        <Link to="../" className="navbar-brand">Textea</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

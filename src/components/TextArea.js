@@ -94,7 +94,7 @@ export default function TextArea() {
     let disButtons = text.length===0;
 
     return (
-        <>
+        <div className="container mt-5">
             {alertText && <div className={`alert alert-dismissible alert-${alertText.color}`}>
                 <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
                 {alertText.text}
@@ -120,6 +120,6 @@ export default function TextArea() {
                 <Button title="Clear Text" color="danger" disabled={disButtons} workfn={clearText}/>
                 <Button title="Copy Text" color="light" disabled={disButtons} workfn={copyText}/>
             </div>
-        </>
+        </div>
     )
 }
