@@ -6,6 +6,17 @@ function getButton(title, color, disabled, workfn) {
     )
 }
 
+function getWords(text) {
+    let words = text.split(" ").filter( (t)=>{ return t.length>0; } );
+    words = text.split("\n").filter( (t)=>{ return t.length>0; } );
+    return words.length
+}
+
+function getLines(text) {
+    let lines = text.split("\n").filter( (t)=>{ return t.length>0; } );
+    return lines.length
+}
+
 export default function TextArea() {
 
     const [text, setText] = useState("");
@@ -61,7 +72,9 @@ export default function TextArea() {
                 {alertText.text}
             </div>}
             <div>
-            <label htmlFor="mainText" className="form-label mt-4">Text Converter</label>
+            <label htmlFor="mainText" className="form-label mt-4">
+                {getLines(text)} Lines, {getWords(text)} Words, {text.length} Characters
+            </label>
             <textarea 
                 className="form-control" 
                 rows="8" 
