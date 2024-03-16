@@ -19,8 +19,13 @@ function getLines(text) {
 
 export default function TextArea() {
 
-    const [text, setText] = useState("");
+    const [text, setTextData] = useState(localStorage['text'] || "");
     const [alertText, setAlert] = useState(null);
+
+    const setText = (t)=>{
+        setTextData(t)
+        localStorage['text'] = t;
+    }
 
     const handleChange = (event)=>{
         setText(event.target.value)
