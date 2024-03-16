@@ -111,7 +111,7 @@ export default function TextArea() {
                 placeholder='Enter your text here...'
             ></textarea>
             </div>
-            <div className='my-3'>
+            <div className='btn-group d-flex flex-wrap my-3'>
                 <Button title="Lower Case" color="primary" disabled={disButtons} workfn={setLowerCase}/>
                 <Button title="Upper Case" color="secondary" disabled={disButtons} workfn={setUpperCase}/>
                 <Button title="Beautify JSON" color="success" disabled={disButtons} workfn={beautifyJSON}/>
