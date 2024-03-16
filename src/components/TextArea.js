@@ -29,7 +29,25 @@ export default function TextArea() {
             setAlert({text:"Sorry, but the input cannot be parsed into a JSON object.",color:"danger"});
             setTimeout(()=>{
                 setAlert(null);
-            }, 2000);
+            }, 2500);
+        }
+    }
+    const filterText = ()=>{
+        let filter = prompt("Enter the text pattern to search for");
+        if(filter) {
+            let splitText = text.split("\n");
+            let filtered = [];
+            for(let i=0;i<splitText.length;i++){
+                if(splitText[i].includes(filter))
+                filtered.push(splitText[i]);
+            }
+            setText(filtered.join("\n"));
+        }
+        else {
+            setAlert({text:"Filter Text cannot be empty.",color:"danger"});
+            setTimeout(()=>{
+                setAlert(null);
+            }, 2500);
         }
     }
     const copyText = ()=>{
@@ -55,7 +73,7 @@ export default function TextArea() {
             {getButton("Lower Case", "primary", (text.length===0), setLowerCase)}
             {getButton("Upper Case", "secondary", (text.length===0), setUpperCase)}
             {getButton("Beautify JSON", "success", (text.length===0), beautifyJSON)}
-            {getButton("Soon!", "info", true)}
+            {getButton("Filter Text", "info", (text.length===0), filterText)}
             {getButton("Soon!", "warning", true)}
             {getButton("Soon!", "danger", true)}
             {getButton("Copy Text", "light", (text.length===0), copyText)}
