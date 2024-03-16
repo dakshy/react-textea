@@ -72,6 +72,18 @@ export default function TextArea() {
             }, 2500);
         }
     }
+    const toBinary = ()=>{
+        let num = parseInt(text);
+        if(!isNaN(num)) {
+            setText(num.toString(2));
+        }
+        else {
+            setAlert({text:"Sorry, but the input cannot be parsed into int type.",color:"danger"});
+            setTimeout(()=>{
+                setAlert(null);
+            }, 2500);
+        }
+    }
     const copyText = ()=>{
         navigator.clipboard.writeText(text);
     }
@@ -84,7 +96,7 @@ export default function TextArea() {
     return (
         <>
             {alertText && <div className={`alert alert-dismissible alert-${alertText.color}`}>
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
                 {alertText.text}
             </div>}
             <div>
@@ -104,7 +116,7 @@ export default function TextArea() {
                 <Button title="Upper Case" color="secondary" disabled={disButtons} workfn={setUpperCase}/>
                 <Button title="Beautify JSON" color="success" disabled={disButtons} workfn={beautifyJSON}/>
                 <Button title="Filter Text" color="info" disabled={disButtons} workfn={filterText}/>
-                <Button title="Soon!" color="warning" disabled={true} workfn={null}/>
+                <Button title="Binary Number" color="warning" disabled={disButtons} workfn={toBinary}/>
                 <Button title="Clear Text" color="danger" disabled={disButtons} workfn={clearText}/>
                 <Button title="Copy Text" color="light" disabled={disButtons} workfn={copyText}/>
             </div>
