@@ -13,8 +13,7 @@ function Button(props) {
 }
 
 function getWords(text) {
-    let words = text.split(" ").filter( (t)=>{ return t.length>0; } );
-    words = text.split("\n").filter( (t)=>{ return t.length>0; } );
+    let words = text.trim().split(/\s+/).filter( (t)=>{ return t.length>0; } );
     return words.length
 }
 
